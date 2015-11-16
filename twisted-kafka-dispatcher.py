@@ -13,7 +13,7 @@ class MyChat(basic.LineReceiver):
 
     def __init__(self):
         # Create random client id
-        self.client = KafkaClient(hosts="192.168.59.103:9092")
+        self.client = KafkaClient(hosts="127.0.0.1:9092")
         self.request_topic = self.client.topics['mobile-request']
         self.response_topic = self.client.topics['mobile-response']
         self.producer = self.request_topic.get_producer(linger_ms=1)
@@ -90,7 +90,7 @@ from pykafka.balancedconsumer import BalancedConsumer, OffsetType
 def consume_message_bot(client_map):
     print "In consume_message_bot:", client_map
 
-    client = KafkaClient(hosts="192.168.59.103:9092")
+    client = KafkaClient(hosts="127.0.0.1:9092")
     response_topic = client.topics['mobile-response']
 
     consumer = response_topic.get_simple_consumer(
